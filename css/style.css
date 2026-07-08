@@ -1,0 +1,520 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #0b0b0b;
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* =========================
+   SVG FILTER
+========================= */
+
+.hidden-filter {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+/* =========================
+   SCROLL SPACE
+========================= */
+
+.scroll-area {
+    height: 9000px;
+    width: 100%;
+}
+
+
+/* =========================
+   FIXED VIEWPORT
+========================= */
+
+.fixed-viewport {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.camera {
+
+    position: absolute;
+
+    width: 2000px;
+    height: 8000px;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+}
+
+
+/* =========================
+   BLOB
+========================= */
+
+.gooey-group {
+
+    position: absolute;
+
+    top: 120px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    filter: url(#goo);
+
+    pointer-events: auto;
+
+}
+
+
+.blob {
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    animation: blobPulse 5s infinite ease-in-out;
+
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        width .6s,
+        height .6s;
+
+}
+
+
+
+@keyframes blobPulse {
+
+
+    0% {
+
+        border-radius:
+        43% 57% 52% 48% /
+        47% 42% 58% 53%;
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        border-radius:
+        60% 40% 45% 55% /
+        50% 60% 40% 50%;
+
+        transform: scale(1.08);
+
+    }
+
+
+    100% {
+
+        border-radius:
+        43% 57% 52% 48% /
+        47% 42% 58% 53%;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+
+/* =========================
+   CLICK HINT
+========================= */
+
+
+.blob-hint {
+
+    position: absolute;
+
+    top: -90px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    letter-spacing: .04em;
+
+    opacity: .8;
+
+}
+
+
+.arrow {
+
+    margin-top: 10px;
+
+    font-size: 25px;
+
+    animation: arrowMove 1.5s infinite ease-in-out;
+
+}
+
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(10px);
+
+    }
+
+}
+
+
+
+/* =========================
+   SVG LINE
+========================= */
+
+
+.line-svg {
+
+    position: absolute;
+
+    top:0;
+    left:0;
+
+    width:2000px;
+    height:8000px;
+
+    overflow:visible;
+
+    pointer-events:none;
+
+}
+
+
+.line-svg path {
+
+    fill:none;
+
+    stroke:white;
+
+    stroke-width:8;
+
+    stroke-linecap:round;
+
+}
+
+
+.animated-line-container {
+
+    opacity:.15;
+
+}
+
+
+
+/* =========================
+   ABOUT CARD
+========================= */
+
+
+.about-card {
+
+    position:absolute;
+
+
+    top:300px;
+    left:50%;
+
+
+    transform:
+
+        translateX(-50%)
+        scale(.8);
+
+
+    width:260px;
+    min-height:140px;
+
+
+    background:white;
+
+    color:#111;
+
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+
+    border-radius:
+
+        45% 55% 50% 50% /
+        55% 45% 55% 45%;
+
+
+    cursor:grab;
+
+    pointer-events:auto;
+
+
+    user-select:none;
+
+
+    opacity:0;
+
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.25);
+
+
+    transition:
+
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        border-radius .5s,
+        width .6s,
+        height .6s,
+        opacity .5s;
+
+}
+
+
+
+.about-card:active {
+
+    cursor:grabbing;
+
+}
+
+
+
+.face-text {
+
+
+    font-size:40px;
+
+    font-weight:700;
+
+    pointer-events:none;
+
+}
+
+
+
+.about-content {
+
+
+    position:absolute;
+
+
+    opacity:0;
+
+
+    width:80%;
+
+
+    transition:.5s;
+
+
+}
+
+
+
+.about-content h2 {
+
+    font-size:50px;
+
+    margin-bottom:20px;
+
+}
+
+
+.about-content p {
+
+    font-size:20px;
+
+    line-height:1.5;
+
+}
+
+
+
+/* =========================
+   CARD FULLSCREEN STATE
+   (JS aggiungerà .expanded)
+========================= */
+
+
+.about-card.expanded {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    width:100vw;
+
+    height:100vh;
+
+
+    transform:none;
+
+
+    border-radius:0;
+
+
+    z-index:100;
+
+
+}
+
+
+.about-card.expanded .face-text {
+
+    display:none;
+
+}
+
+
+.about-card.expanded .about-content {
+
+
+    opacity:1;
+
+
+}
+
+
+
+/* =========================
+   BLUR BACKGROUND
+========================= */
+
+
+.fixed-viewport.blur {
+
+
+    backdrop-filter:blur(20px);
+
+}
+
+
+.fixed-viewport.blur .camera {
+
+
+    filter:blur(20px);
+
+    transform:
+        translateX(-50%)
+        scale(1.05);
+
+
+}
+
+
+
+/* =========================
+   TRAIL PARTICLES
+========================= */
+
+
+.trail-particle {
+
+
+    position:absolute;
+
+
+    width:12px;
+
+    height:12px;
+
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    pointer-events:none;
+
+
+    opacity:.8;
+
+
+    transform:translate(-50%,-50%);
+
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+
+@media(max-width:768px){
+
+
+    .camera {
+
+        transform:
+        translateX(-50%)
+        scale(.55);
+
+        transform-origin:
+        top center;
+
+    }
+
+
+}
