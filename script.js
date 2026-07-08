@@ -13,10 +13,20 @@ gsap.registerPlugin(
 ========================= */
 
 
+/* =========================
+   LENIS
+========================= */
+
 const lenis = new Lenis({
-    smoothWheel: true,
-    lerp: 0.08
+    duration:1.2,
+    smoothWheel:true
 });
+
+
+lenis.on(
+    "scroll",
+    ScrollTrigger.update
+);
 
 
 function raf(time){
@@ -31,22 +41,16 @@ requestAnimationFrame(raf);
 
 
 
-lenis.on(
-    "scroll",
-    ScrollTrigger.update
+gsap.ticker.add(
+    (time)=>{
+
+        lenis.raf(time * 1000);
+
+    }
 );
 
 
-
-gsap.ticker.add((time)=>{
-
-    lenis.raf(time * 1000);
-
-});
-
-
 gsap.ticker.lagSmoothing(0);
-
 
 
 /* =========================
@@ -101,13 +105,14 @@ gsap.to(
 
             end:"bottom bottom",
 
-            scrub:true
+            scrub:1,
+
+            markers:false
 
         }
 
     }
 );
-
 
 
 /* =========================
