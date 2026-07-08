@@ -518,3 +518,18 @@ body {
 
 
 }
+.camera {
+    pointer-events:none;
+}
+
+.animated-line-container {
+    z-index:1;
+}
+
+.gooey-group {
+    z-index:10;
+}
+
+.about-card {
+    z-index:20;
+}
