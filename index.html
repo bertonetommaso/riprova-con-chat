@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Filtro Goo -->
+    <svg class="hidden-filter" aria-hidden="true">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="8"
+                    result="blur" />
+
+                <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="
+                        1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 18 -7"
+                    result="goo"/>
+
+                <feBlend
+                    in="SourceGraphic"
+                    in2="goo"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Area di scroll -->
+    <div class="scroll-area"></div>
+
+    <!-- Viewport fisso -->
+    <div class="fixed-viewport">
+
+        <div class="camera">
+
+            <!-- Hint -->
+            <div class="blob-hint">
+                <div>click here</div>
+                <div class="arrow">↓</div>
+            </div>
+
+            <!-- Blob -->
+            <div class="gooey-group">
+
+                <div
+                    class="blob"
+                    id="blob">
+                </div>
+
+                <!-- piccolo tratto iniziale -->
+                <svg
+                    class="line-svg"
+                    viewBox="0 0 2000 8000">
+
+                    <path d="M1000 150 V180"/>
+
+                </svg>
+
+            </div>
+
+            <!-- Linea animata -->
+            <svg
+                class="line-svg animated-line-container"
+                viewBox="0 0 2000 8000">
+
+                <path
+                    id="animatedLine"
+                    d="M1000,150v731.09c0,11.05-8.95,20-20,20H225.09c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h1555.23c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20H637.32c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h754.91c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20H225.09c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h1555.23c11.05,0,20,8.95,20,20v787.23c0,11.05-8.95,20-20,20h-348.09c-11.05,0-20,8.95-20,20v373.62c0,11.05-8.95,20-20,20H225.09c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h1555.23c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20h-348.09c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h348.09c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20H225.09c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h769.69c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20h-357.46c-11.05,0-20,8.95-20,20v373.62c0,11.05,8.95,20,20,20h1143c11.05,0,20,8.95,20,20v373.62c0,11.05-8.95,20-20,20H205.09"/>
+
+            </svg>
+
+            <!-- Card -->
+
+            <div
+                class="about-card"
+                id="aboutCard">
+
+                <span class="face-text">
+                    me :]
+                </span>
+
+                <div class="about-content">
+
+                    <h2>Hello!</h2>
+
+                    <p>
+                        Qui ci sarà il contenuto della sezione About.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+    <!-- Lenis -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
